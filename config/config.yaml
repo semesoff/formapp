@@ -4,3 +4,8 @@ database:
   user: admin
   password: 123456
   dbname: db
+
+server:
+  host: localhost
+  port: 8080
+  addr: localhost:8080

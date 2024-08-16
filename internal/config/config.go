@@ -7,6 +7,7 @@ import (
 
 type Config struct {
 	Database DatabaseConfig
+	Server   ServerConfig
 }
 
 type DatabaseConfig struct {
@@ -17,6 +18,12 @@ type DatabaseConfig struct {
 	Dbname   string
 }
 
+type ServerConfig struct {
+	Host string
+	Port string
+	Addr string
+}
+
 func LoadConfig() (Config, error) {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
@@ -25,13 +32,12 @@ func LoadConfig() (Config, error) {
 	var config Config
 
 	if err := viper.ReadInConfig(); err != nil {
-		return config, err
+		log.Fatalf("Error reading config: %v", err)
 	}
 
 	if err := viper.Unmarshal(&config); err != nil {
-		return config, err
+		log.Fatalf("Error unmarshal config: %v", err)
 	}
-
 	return config, nil
 }
 
