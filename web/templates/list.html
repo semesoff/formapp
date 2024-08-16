@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список форм</title>
+    <link rel="stylesheet" href="static/list.css">
+</head>
+<body>
+<div class="container">
+    <div class="list-container">
+        <h1>Список отправленных форм</h1>
+        <div class="form-list">
+            {{range .}}
+            <div class="form-item">
+                <h2>{{.Name}}</h2>
+                <p>Email: <a href="mailto:{{.Email}}">{{.Email}}</a></p>
+            </div>
+            {{end}}
+        </div>
+        <a href="/" class="back-button">На главную</a>
+    </div>
+</div>
+</body>
+</html>
